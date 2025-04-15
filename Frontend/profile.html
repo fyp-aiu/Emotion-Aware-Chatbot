@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100%;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Profile | AIU Emotion-Aware Chatbot</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #1B4D3E;
+            --secondary-color: #4CAF50;
+            --hover-color: rgba(255,255,255,0.1);
+            --accent-color: #81C784;
+        }
+
+        body {
+            background: #f8fafc;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 250px;
+            background: var(--primary-color);
+            color: white;
+            height: 100vh;
+            padding: 1rem;
+            position: fixed;
+            box-shadow: 2px 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            width: 160px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Sidebar item hover effect */
+        .sidebar .nav-item {
+            padding: 0.7rem 1rem;
+            margin: 0.4rem 0;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar .nav-item:hover {
+            background: var(--hover-color);
+        }
+
+        .sidebar .nav-item i {
+            width: 25px;
+            margin-right: 15px;
+        }
+
+        .sidebar .nav-item a {
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            align-items: center;
+            font-size: 1rem;
+        }
+
+        .sidebar .nav-item a:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            transform: translateX(5px);
+        }
+
+        /* Logo animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        /* Profile Container */
+        .profile-container {
+            margin-left: 250px;
+            padding: 2rem;
+            background: #f8fafc;
+            min-height: 100vh;
+        }
+
+        .profile-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            padding: 2rem;
+            max-width: 800px;
+        }
+
+        .avatar-section {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .edit-icon {
+            position: relative;
+            top: -40px;
+            right: -40px;
+            background: var(--secondary-color);
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .detail-group {
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .detail-label {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .detail-value {
+            color: #555;
+            font-size: 0.95rem;
+        }
+
+        .edit-btn {
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 1.2rem;
+            border-radius: 8px;
+            float: right;
+            transition: all 0.3s ease;
+        }
+
+        .edit-btn:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        /* Security Section */
+        .security-card {
+            background: #f8fff9;
+            border: 1px solid var(--accent-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .profile-container {
+                margin-left: 0;
+                padding: 1rem;
+            }
+            .sidebar {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <nav class="sidebar">
+        <div class="text-center mb-4">
+            <img src="images/logo.png" class="logo" alt="AIU Logo">
+        </div>
+        <div class="nav flex-column">
+            <div class="nav-item">
+                <a href="dashboard.html" class="text-white">
+                    <i class="fas fa-home"></i> Dashboard
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="profile.html" class="text-white">
+                    <i class="fas fa-user"></i> Profile
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="chatbot.html" class="text-white">
+                    <i class="fas fa-robot"></i> Chatbot
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="alert.html" class="text-white">
+                    <i class="fas fa-bell"></i> Alert and Notification
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="history.html" class="text-white">
+                    <i class="fas fa-history"></i> History
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="complaint-status.html" class="text-white">
+                    <i class="fas fa-clipboard-list"></i> Complaint Status
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="logout.html" class="text-white">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Profile Content -->
+    <div class="profile-container">
+        <div class="profile-card">
+            <!-- Avatar Section -->
+            <div class="avatar-section">
+                <img src="default-avatar.jpg" class="avatar" alt="Student Avatar">
+                <div class="edit-icon">
+                    <i class="fas fa-camera text-white"></i>
+                </div>
+                <h3 class="mb-1">Sarah Johnson</h3>
+                <p class="text-muted">Computer Science Student</p>
+            </div>
+
+            <!-- Personal Details -->
+            <div class="detail-group">
+                <button class="edit-btn">
+                    <i class="fas fa-edit me-2"></i>Edit
+                </button>
+                <div class="detail-label">Personal Information</div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p class="detail-value">
+                            <i class="fas fa-envelope me-2"></i>
+                            sarah.j@aiu.edu
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <p class="detail-value">
+                            <i class="fas fa-id-card me-2"></i>
+                            AIU22102005
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Security Settings -->
+            <div class="security-card">
+                <div class="detail-label mb-3">
+                    <i class="fas fa-shield-alt me-2"></i>Security Settings
+                </div>
+                
+                <div class="detail-group">
+                    <div class="detail-value">
+                        <div class="mb-3">
+                            <i class="fas fa-lock me-2"></i>
+                            Password: ********
+                            <button class="btn btn-sm btn-outline-secondary float-end">
+                                Change Password
+                            </button>
+                        </div>
+                        <div class="mb-3">
+                            <i class="fas fa-phone me-2"></i>
+                            2FA: Inactive
+                            <button class="btn btn-sm btn-outline-secondary float-end">
+                                Enable 2FA
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Notification Preferences -->
+            <div class="detail-group mt-4">
+                <div class="detail-label">
+                    <i class="fas fa-bell me-2"></i>Notification Preferences
+                </div>
+                <div class="form-check mt-2">
+                    <input class="form-check-input" type="checkbox" id="emailNotifications" checked>
+                    <label class="form-check-label detail-value" for="emailNotifications">
+                        Email Notifications
+                    </label>
+                </div>
+                <div class="form-check mt-2">
+                    <input class="form-check-input" type="checkbox" id="pushNotifications">
+                    <label class="form-check-label detail-value" for="pushNotifications">
+                        Push Notifications
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Avatar Upload Logic
+        document.querySelector('.edit-icon').addEventListener('click', function() {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = 'image/*';
+            input.onchange = function(event) {
+                const file = event.target.files[0];
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.querySelector('.avatar').src = e.target.result;
+                }
+                reader.readAsDataURL(file);
+            };
+            input.click();
+        });
+
+        // Edit Button Handler
+        document.querySelectorAll('.edit-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                // Add edit logic here
+                alert('Edit functionality will be implemented in next phase');
+            });
+        });
+    </script>
+</body>
+</html>

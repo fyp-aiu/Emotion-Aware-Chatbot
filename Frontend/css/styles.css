@@ -15,10 +15,71 @@
 }
 
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Poppins', sans-serif;
     line-height: 1.6;
     background-color: var(--aiu-light);
 }
+
+/* ------------------ */
+
+/* --- Content Width Adjustment for Sections After Hero --- */
+
+/* Target the container within all sections AFTER the hero */
+#overview-section .container,
+#features-section .container,
+#how-it-works-section .container,
+.goals-impact-section .container,
+#demo-section .container,
+#about-section .container,
+.privacy-ethics-section .container,
+#contact-section .container {
+    max-width: 70vw; /* Set the maximum width to 80% of the viewport width */
+    margin: 0 auto; /* Keep the container centered */
+    /* The existing horizontal padding (e.g., padding: 0 var(--spacing-unit);)
+       defined for .container should still apply, adding space inside the 80vw limit. */
+}
+
+/* --- Responsive Adjustments for 80% Width --- */
+
+/* On tablets and slightly smaller screens, allow content to be wider */
+@media (max-width: 992px) {
+     #overview-section .container,
+     #features-section .container,
+     #how-it-works-section .container,
+     .goals-impact-section .container,
+     #demo-section .container,
+     #about-section .container,
+     .privacy-ethics-section .container,
+     #contact-section .container {
+         max-width: 90vw; /* Increase width to 90% */
+     }
+}
+
+/* On mobile screens, allow content to take up almost full width with padding */
+@media (max-width: 768px) {
+     #overview-section .container,
+     #features-section .container,
+     #how-it-works-section .container,
+     .goals-impact-section .container,
+     #demo-section .container,
+     #about-section .container,
+     .privacy-ethics-section .container,
+     #contact-section .container {
+         max-width: 100%; /* Allow container to take up full width */
+         padding: 0 var(--spacing-unit); /* Ensure padding adds space on sides */
+     }
+}
+
+
+/* ------------------ */
+
+
+
+
+
+
+
+
 
 /* Navigation */
 .main-nav {
@@ -32,15 +93,20 @@ body {
     list-style: none;
     display: flex;
     gap: 5rem; /* Adds space between menu items */
-    margin-left: 25px;
-    padding-left: 25px;
+    margin-left: 15px;
+    margin-right: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
     font-weight: bold;
 }
 .list-items li{
     display: inline-block;
     margin-right: 2rem;
 }
-
+.header-titles{
+    color: var(--aiu-primary);
+    font-weight: bold;
+}
 .nav-container {
     max-width: 1200px;
     margin: 0 auto;
@@ -52,11 +118,7 @@ body {
 
 .logo {
     height: 50px;
-    transition: transform 0.9s ease;
-}
-
-.logo:hover {
-    transform: scale(1.5);
+    /* transition: transform 0.9s ease; */
 }
 
 .nav-links {
@@ -90,7 +152,7 @@ body {
 }
 
 .hero-content {
-    max-width: 800px;
+    max-width: 700px;
 }
 
 .hero-content h1 {
@@ -233,12 +295,61 @@ html {
     scroll-behavior: smooth; /* Enable smooth scrolling */
 }
 
-.container {
-    max-width: 1200px; /* Adjust as needed */
-    margin: 0;
-    padding: 0 var(--spacing-unit);
+.container-overview {
+    max-width: 70%; /* Adjust as needed */
+    margin: auto;
+    /* padding: 0 var(--spacing-unit); */
+    /* background-color: rgb(228, 238, 241); */
+    display: flex; 
+    flex-direction: column;
+    align-items: justify;
+    justify-content: center;
+    margin-top: -30px;
 }
 
+
+.overview-item animate-on-scroll fade-in {
+    margin-left: 20px; /* Adjust margin */
+    margin-right: 20px; /* Adjust margin */
+    
+}
+/* #goals-section {
+    margin-right: 20px;
+    margin-left: 20px;
+    margin-bottom: 15px;
+    margin-top: 10px;
+    background-color: rgb(125, 252, 6);
+    } */
+
+    #goals-section {
+        margin: 20px; /* Unified margin */
+        padding: 20px; /* Add padding for better spacing */
+        border-radius: 12px; /* Rounded corners */
+        background: linear-gradient(135deg, #4CAF50, #81C784); /* Gradient background */
+        color: #fff; /* White text for contrast */
+        text-align: center; /* Center-align text */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+        transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
+    }
+    
+    #goals-section:hover {
+        transform: translateY(-5px); /* Lift effect on hover */
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* More pronounced shadow */
+    }
+    
+    #goals-section h3 {
+        font-size: 1.8rem; /* Larger heading */
+        margin-bottom: 10px; /* Space below heading */
+        font-weight: bold; /* Bold text */
+        text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2); /* Subtle text shadow */
+    }
+    
+    #goals-section p {
+        font-size: 1.2rem; /* Adjust font size for readability */
+        line-height: 1.6; /* Improve line spacing */
+        opacity: 0.9; /* Slightly transparent text */
+    }
+}
 .section {
     padding: var(--spacing-unit) * 4 0; /* Adjust padding */
 }
@@ -317,22 +428,19 @@ html {
 
 /* --- Header --- */
 .site-header {
-    position: fixed; /* Initially fixed, JS will add 'sticky' class */
+    /* position: fixed; Initially fixed, JS will add 'sticky' class */
     width: 100%;
     top: 0;
     left: 0;
     z-index: 1000; /* Stay on top */
-    background-color: rgba(255, 255, 255, 0.95); /* Semi-transparent white */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    padding: var(--spacing-unit) 0;
-    transition: all 0.3s ease-in-out;
+    background: transparent; /* Semi-transparent */
+    padding: 10px;
+    margin-top: 0px;
 }
 
 /* Class added by JS when scrolled */
 .site-header.sticky {
-    padding: var(--spacing-unit) * 0.75 0; /* Slightly smaller when sticky */
-    background-color: var(--white); /* Fully opaque when sticky */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    margin-top: 0px;
 }
 
 
@@ -340,24 +448,25 @@ html {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-top: 0px;
+    margin-top: 0px;
 }
 
 .site-header .logo img {
     height: 40px; /* Adjust logo size */
-    transition: height 0.3s ease-in-out;
-}
-
-.site-header.sticky .logo img {
-    height: 30px; /* Smaller logo when sticky */
+    /* transition: height 0.3s ease-in-out; */
+    margin-top: 0px;
 }
 
 .site-header .main-nav ul {
     list-style: none;
     display: flex;
+    margin-top: 0px;
 }
 
 .site-header .main-nav li {
     margin-left: var(--spacing-unit) * 2;
+    margin-top: 0px;
 }
 
 .site-header .main-nav a {
@@ -365,22 +474,28 @@ html {
     color: var(--text-color);
     font-weight: 500;
     transition: color 0.3s ease;
+    margin-top: 0px;
 }
 
 .site-header .main-nav a:hover {
     color: var(--primary-color);
+    margin-top: 0px;
 }
 
 .site-header .auth-buttons {
     display: flex;
     gap: var(--spacing-unit);
     align-items: center;
+    margin-top: 0px;
 }
 .loginbtn {
     background: green;
     background-color: green;
     color: rgb(244, 247, 244);
-    padding: 15px 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
     border-radius: 25px;
     font-size: 1rem;
     transition: background-color 0.3s ease, transform 0.3s ease;
@@ -391,8 +506,8 @@ html {
     text-align: center;
     display: inline-block;
     margin: 0 auto;
-    margin-top: 5px;
-    margin-bottom: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     animation: pulse 1.5s infinite ease-in-out;
     :hover {
         background-color: rgb(31, 12, 202);
@@ -542,6 +657,7 @@ html {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid */
     gap: var(--spacing-unit) * 3;
+    
 }
 
 .overview-item {
@@ -575,6 +691,9 @@ html {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
     gap: var(--spacing-unit) * 2;
+}
+#features-section{
+    background: none;
 }
 
 .feature-card {
@@ -1574,3 +1693,739 @@ html {
     padding-top: 0px; /* Reset padding for the container */
 }
 
+#container-header {
+    margin-top: 0px; /* Reset margin for the header */
+    padding-top: 0px; /* Reset padding for the header */
+    padding-bottom: 0px; /* Reset padding for the header */
+}
+
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+
+/* Updated Section */
+/* --- Hero Section Text Styling Enhancement --- */
+.hero-section {
+    /* Ensure you have background video/image and overlay styles here */
+    /* Example overlay from previous code: */
+    /* background: url('../images/hero-bg.jpg') no-repeat center center/cover; */
+    /* position: relative; z-index: 1; */
+    /* &::before { ... dark overlay styles ... } */
+
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-top: /* adjust based on header height */;
+    color: var(--white);
+    position: relative;
+    z-index: 1; /* Ensure content is above the pseudo-element overlay */
+    overflow: hidden; /* Hide anything extending beyond the section */
+}
+
+.hero-section .container {
+    /* Adjust layout if needed, e.g., Flexbox for content and illustration */
+    display: flex; /* Assuming content and illustration are flex items */
+    align-items: center;
+    gap: var(--spacing-unit) * 4;
+    flex-wrap: wrap;
+}
+
+.hero-content {
+    flex: 1;
+    min-width: 300px;
+    z-index: 2; /* Ensure text is above overlay and background */
+    position: relative; /* Needed for z-index */
+}
+
+
+.hero-content h1 {
+    font-size: 3.8rem; /* Make headline even larger */
+    font-weight: 800; /* Extra bold */
+    margin-bottom: var(--spacing-unit);
+    line-height: 1.2;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3); /* Add a subtle text shadow for readability */
+    color: var(--white); /* Ensure white text */
+    /* aniamte.css classes animate__animated animate__fadeInUp are in HTML */
+}
+
+.hero-content p {
+    font-size: 1.4rem; /* Slightly larger subheadline */
+    opacity: 0.95; /* Less transparency */
+    margin-bottom: var(--spacing-unit) * 2.5; /* More space before buttons */
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2); /* Add a subtle text shadow */
+     max-width: 600px; /* Limit width for readability */
+     /* aniamte.css classes animate__animated animate__fadeInUp animate__delay-0-5s are in HTML */
+}
+
+/* --- Blue and Red Gradient Button --- */
+.btn-gradient-blue-red {
+    display: inline-flex; /* Use flexbox to align icon and text */
+    align-items: center; /* Vertically center icon and text */
+    padding-top: 15px; /* Adjust padding for top and bottom */
+    padding-bottom: 15px; /* Adjust padding for top and bottom */
+    padding-left: 20px; /* Left padding */
+    padding-right: 20px; /* Right padding */
+    border-radius: 30px; /* More rounded pill shape */
+    text-decoration: none;
+    font-weight: 700; /* Bolder font weight */
+    font-size: 1.1rem; /* Slightly larger font */
+    color: var(--white); /* White text */
+    text-align: center;
+    border: none; /* No border */
+    cursor: pointer;
+    position: relative; /* Needed for hover effects */
+    overflow: hidden; /* Hide gradient overflow during animation */
+    z-index: 1; /* Ensure it's above other potential elements */
+    position: relative;
+    position: center;
+    display: inline-block; /* Inline-block for button-like behavior */
+    margin-top: 30px;
+
+    /* Gradient background */
+    background: linear-gradient(to right, #007bff, #dc3545); /* Blue to Red */
+    background-size: 200% auto; /* Make background wider for animation */
+
+    /* Smooth transition */
+    transition: background-position 0.5s ease, transform 0.3s ease, box-shadow 0.3s ease;
+
+     /* aniamte.css class animate__animated animate__fadeInUp animate__delay-1s is on parent div */
+}
+
+.btn-gradient-blue-red .fas {
+     margin-right: 8px; /* Space between icon and text */
+     font-size: 1.2rem; /* Icon size */
+     transition: transform 0.3s ease; /* Icon transition */
+}
+
+
+/* Hover Effect for Gradient Button */
+.btn-gradient-blue-red:hover {
+    background-position: right center; /* Animate gradient position on hover */
+    color: var(--white); /* Ensure text stays white */
+    transform: translateY(-3px); /* Lift effect */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* More pronounced shadow */
+    z-index: 2; /* Bring to front on hover */
+}
+
+.btn-gradient-blue-red:hover .fas {
+    transform: scale(1.1); /* Slightly enlarge icon on hover */
+}
+
+
+/* Ensure .hero-cta-buttons div styles are present (display: flex, gap, etc.) */
+.hero-cta-buttons {
+     display: flex;
+     gap: var(--spacing-unit); /* Space between buttons if you add another */
+     flex-wrap: wrap;
+    /* aniamte.css classes animate__animated animate__fadeInUp animate__delay-1s are in HTML */
+}
+
+/* If you have a second button (Learn More), style it distinctly */
+/* For example, using the .btn-secondary style from previous examples */
+/* .hero-cta-buttons .btn-secondary { ... } */
+
+/* ... Ensure responsive styles for Hero section text are included in media queries ... */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2.8rem; /* Adjust size on smaller screens */
+    }
+    .hero-content p {
+        font-size: 1.2rem; /* Adjust size on smaller screens */
+    }
+    .btn-gradient-blue-red {
+         font-size: 1rem;
+         padding: var(--spacing-unit) * 0.8 var(--spacing-unit) * 2;
+         border-radius: 25px;
+    }
+    .hero-cta-buttons {
+        justify-content: center; /* Center buttons on smaller screens */
+    }
+}
+
+
+/* updated */
+
+#subtitel {
+    font-size: 1.4rem; /* Adjust size for subtitle */
+    color: var(--white); /* Ensure white text */
+    margin-bottom: var(--spacing-unit) * 2; /* Space below subtitle */
+    text-align: center; /* Center the subtitle */
+    opacity: 0.9; /* Slightly less transparent */
+    max-width: 700px; /* Limit width for readability */
+    margin-left: auto; /* Center block element horizontally */
+    margin-right: auto; /* Center block element horizontally */
+}
+
+
+#overview-section{
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.section project-overview-section{
+    justify-content: center;
+    align-items: center;
+}
+
+#features-container {
+    align-items: center;
+    justify-content: center;
+    display: relative;
+    color: #0056b3;
+    display: grid;
+    /* 2 by 3 grid */
+
+
+}
+
+/* this is the work for updated styles of Chatbot */
+#gaps-section {
+    display: flex; /* Use flexbox for alignment */
+    flex-direction: column; /* Stack items vertically */
+    flex-wrap: wrap;
+    align-items: center; /* Center items horizontally */
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    margin: 10px auto; /* Add vertical spacing and center horizontally */
+    padding: 30px; /* Add internal spacing */
+    background: linear-gradient(135deg, #4CAF50, #81C784); /* Gradient background */
+    border-radius: 12px; /* Rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    color: #fff; /* White text for contrast */
+    text-align: justify; /* Center-align text */
+    margin-right: 30px;
+
+}
+
+.overview-section-second {
+    position: relative; /* Ensure proper positioning for the overlay */
+    background: linear-gradient(
+            rgba(0, 0, 0, 0.5), 
+            rgba(0, 0, 0, 0.5)
+        ), 
+        url('../images/pexels-evie-shaffer-1259279-2395249.jpg') no-repeat center center/cover; /* Add your background image with a dark overlay */
+    background-size: cover; /* Ensure the image covers the entire section */
+    color: var(--white); /* Ensure text is readable */
+    padding: 60px 30px; /* Add padding for spacing */
+
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* Add a shadow for depth */
+    overflow: hidden; /* Prevent overflow issues */
+}
+
+/* Add a semi-transparent overlay */
+.overview-section-second::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.7) 0%, /* Darker at the top */
+        rgba(0, 0, 0, 0.3) 50%, /* Lighter in the middle */
+        rgba(0, 0, 0, 0.7) 100% /* Darker at the bottom */
+    );
+    z-index: -1; /* Place the overlay behind the content */
+}
+
+#title-section {
+    font-size: 3rem; /* Larger font size for the title */
+    font-weight: bolder; /* Make the title bold */
+    color: #3805f3; /* White text for contrast */
+    text-shadow: 2px 2px 8px rgb(10, 10, 10); 
+}
+
+.overview-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(550px, 4fr)); /* Responsive grid */
+    gap: 20px; /* Space between grid items */
+    margin-top: 30px; /* Space above the grid */
+}
+
+.overview-item {
+    background: linear-gradient(135deg, #4CAF50, #81C784); /* Gradient background */
+    padding: 20px; /* Add internal spacing */
+    border-radius: 12px; /* Rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    text-align: center; /* Center-align text */
+    color: #fff; /* White text for contrast */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
+}
+
+
+.overview-item:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* More pronounced shadow */
+}
+
+.overview-item .icon {
+    font-size: 3.5rem; /* Larger icon size */
+    color: #fff; /* White icon */
+    margin-bottom: 15px; /* Space below the icon */
+}
+
+.content h3 {
+    font-size: 1.2rem; Larger heading
+    margin-bottom: 10px; /* Space below the heading */
+    font-weight: bolder; /* Bold text */
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2); /* Subtle text shadow */
+}
+
+.overview-section-second {
+    position: relative; /* Ensure proper positioning for the overlay */
+    background: url('../images/new.jpg') no-repeat center center/cover; /* Add your background image */
+    background-size: cover; /* Ensure the image covers the entire section */
+    color: var(--white); /* Ensure text is readable */
+    padding: 50px 15px; /* Add padding for spacing */
+    z-index: 1; /* Ensure content is above the background */
+    overflow: hidden; /* Prevent overflow issues */
+}
+
+/* Add a semi-transparent overlay */
+.overview-section-second::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(248, 241, 241, 0); /* White overlay with 90% transparency */
+    z-index: -1; /* Place the overlay behind the content */
+}
+
+
+
+#title-section{
+    color: rgb(242, 242, 243);
+}
+
+
+
+/* Video Background Styling */
+#how-it-works-section {
+    position: relative; /* Ensure proper positioning for the video and content */
+    overflow: hidden; /* Prevent overflow issues */
+    z-index: 1; /* Ensure content is above the video */
+    color: #fff; /* Ensure text is readable */
+}
+
+#how-it-works-section .background-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensure the video covers the entire section */
+    z-index: -1; /* Place the video behind the content */
+    opacity: 0.8; /* Add transparency to the video */
+}
+
+#how-it-works-section .container {
+    position: relative; /* Ensure content is above the video */
+    z-index: 2; /* Place content above the video */
+    padding: 60px 20px; /* Add padding for spacing */
+    text-align: center; /* Center-align text */
+}
+
+.how-it-works-timeline {
+    margin-top: 30px; /* Add spacing above the timeline */
+    margin-bottom: -30px;
+}
+
+.timeline-item {
+    background: rgba(3, 247, 133, 0.7); /* Semi-transparent background for timeline items */
+    padding: 10px;
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 10px rgba(13, 202, 7, 0.2); /* Subtle shadow for depth */
+    color: #1d06ec; /* White text for contrast */
+    margin-bottom: 20px; /* Space between items */
+    max-width: 900px; /* Limit width for readability */
+}
+
+#content2{
+    padding: 20px; /* Add internal spacing */
+}
+
+
+/* Mission & Impact Section Styling */
+.goals-impact-section {
+    padding: 60px 20px; /* Add padding for spacing */
+    background-color: #f8f9fa; /* Light background color */
+    text-align: center; /* Center-align text */
+}
+
+.goals-impact-section .section-title {
+    font-size: 2.5rem; /* Larger font size for the title */
+    font-weight: bold; /* Bold text */
+    color: #333; /* Dark text color */
+    margin-bottom: 40px; /* Space below the title */
+    text-align: center; /* Center-align the title */
+}
+
+.impact-metrics-grid {
+    display: flex; /* Use flexbox for alignment */
+    flex-wrap: wrap; /* Allow items to wrap to the next row */
+    justify-content: center; /* Center items horizontally */
+    gap: 20px; /* Add space between items */
+}
+
+.metric-box {
+    flex: 1 1 calc(30% - 20px); /* Each box takes 30% of the width, minus the gap */
+    max-width: 400px; /* Limit the maximum width */
+    background: linear-gradient(135deg, #4CAF50, #81C784); /* Gradient background */
+    padding: 20px; /* Add internal spacing */
+    border-radius: 12px; /* Rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    color: #fff; /* White text for contrast */
+    text-align: center; /* Center-align text */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add hover effect */
+    margin-right: 15px;
+}
+
+.metric-box:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* More pronounced shadow */
+}
+
+.metric-box .icon {
+    font-size: 3rem; /* Larger icon size */
+    color: #fff; /* White icon */
+    margin-bottom: 15px; /* Space below the icon */
+}
+
+.metric-box h3 {
+    font-size: 1.8rem; /* Larger heading */
+    margin-bottom: 10px; /* Space below the heading */
+    font-weight: bold; /* Bold text */
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2); /* Subtle text shadow */
+}
+
+.metric-box p {
+    font-size: 1.2rem; /* Adjust font size for readability */
+    line-height: 1.6; /* Improve line spacing */
+    opacity: 0.9; /* Slightly transparent text */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+    .metric-box {
+        flex: 1 1 calc(45% - 20px); /* Each box takes 45% of the width on medium screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .metric-box {
+        flex: 1 1 100%; /* Each box takes full width on smaller screens */
+    }
+}
+
+
+/* About Team Section Styling */
+.about-team-section {
+    padding: 60px 20px; /* Add padding for spacing */
+    background-color: #f8f9fa; /* Light background color */
+    text-align: center; /* Center-align text */
+    align-items: center; /* Center content vertically */
+    justify-content: center; /* Center content horizontally */
+}
+
+.about-team-section .section-title {
+    font-size: 2.5rem; /* Larger font size for the title */
+    font-weight: bold; /* Bold text */
+    color: #333; /* Dark text color */
+    margin-bottom: 40px; /* Space below the title */
+    text-align: center; /* Center-align the title */
+}
+
+.team-grid {
+    display: flex; /* Use flexbox for alignment */
+    justify-content: justify; /* Center items horizontally */
+    align-items: center;
+}
+
+.team-member {
+    flex: 1 1 calc(30% - 20px); /* Each member takes 30% of the width */
+    max-width: 400px; /* Limit the maximum width */
+    background: #fff; /* White background for contrast */
+    padding: 20px; /* Add internal spacing */
+    border-radius: 12px; /* Rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    text-align: center; /* Center-align text */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add hover effect */
+}
+
+.team-member:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* More pronounced shadow */
+}
+
+.team-member img {
+    width: 100px; /* Set a fixed size for the image */
+    height: 100px; /* Maintain aspect ratio */
+    border-radius: 50%; /* Make the image circular */
+    margin-bottom: 15px; /* Space below the image */
+    border: 3px solid #4CAF50; /* Add a border around the image */
+}
+
+.team-member h3 {
+    font-size: 1.5rem; /* Larger heading */
+    margin-bottom: 10px; /* Space below the heading */
+    font-weight: bold; /* Bold text */
+    color: #333; /* Dark text color */
+}
+
+.team-member .role {
+    font-size: 1.2rem; /* Adjust font size for the role */
+    color: #4CAF50; /* Green color for the role */
+    margin-bottom: 10px; /* Space below the role */
+}
+
+.team-member .quote {
+    font-size: 1rem; /* Adjust font size for the quote */
+    font-style: italic; /* Italicize the quote */
+    color: #666; /* Subtle gray color for the quote */
+    line-height: 1.5; /* Improve line spacing */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+    .team-member {
+        flex: 1 1 calc(45% - 20px); /* Each member takes 45% of the width on medium screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .team-member {
+        flex: 1 1 100%; /* Each member takes full width on smaller screens */
+    }
+}
+
+
+
+
+.last-container {
+    position: relative; /* Ensure proper positioning for the overlay */
+    /* background: url('../images/arts\ \(4\).jpg') no-repeat center center/cover; Add your background image */
+    background-size: cover; /* Ensure the image covers the entire section */
+    color: var(--white); /* Ensure text is readable */
+    padding: 50px 15px; /* Add padding for spacing */
+    z-index: 1; /* Ensure content is above the background */
+    overflow: hidden; /* Prevent overflow issues */
+}
+
+
+#img-remo{
+    background: none;
+    margin-top: -80px;
+}
+
+#about-section{
+    background: none;
+    margin-top: -50px;
+    margin-bottom: -80px;
+}
+
+
+/* FOOTER */
+
+/* Footer Section Styling */
+.site-footer {
+    background: linear-gradient(135deg, #4CAF50, #81C784); /* Gradient background */
+    color: #fff; /* White text for contrast */
+    padding: 50px 20px; /* Add padding for spacing */
+    text-align: center; /* Center-align text */
+    position: relative; /* For decorative elements */
+    overflow: hidden; /* Prevent overflow issues */
+}
+
+.site-footer .section-title {
+    font-size: 0.8rem; /* Larger font size for the title */
+    font-weight: bold; /* Bold text */
+    margin-bottom: 30px; /* Space below the title */
+    color: #fff; /* White text */
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3); /* Subtle text shadow */
+}
+
+.site-footer .contact-info {
+    margin-top: 20px; /* Space above the contact info */
+    font-size: 1.2rem; /* Adjust font size for readability */
+    line-height: 1.8; /* Improve line spacing */
+}
+
+.site-footer .contact-info p {
+    margin-bottom: 10px; /* Space between contact items */
+}
+
+.site-footer .contact-info a {
+    color: #fff; /* White text for links */
+    text-decoration: none; /* Remove underline */
+    font-weight: bold; /* Bold links */
+    transition: color 0.3s ease, transform 0.3s ease; /* Smooth hover effect */
+}
+
+.site-footer .contact-info a:hover {
+    color: #FFD700; /* Gold color on hover */
+    transform: scale(1.1); /* Slight zoom effect */
+}
+
+.site-footer .contact-info i {
+    margin-right: 10px; /* Space between icon and text */
+    color: #FFD700; /* Gold color for icons */
+    transition: transform 0.3s ease; /* Smooth hover effect */
+}
+
+.site-footer .contact-info i:hover {
+    transform: rotate(15deg); /* Rotate icon slightly on hover */
+}
+
+.footer-bottom {
+    margin-top: 40px; /* Space above the footer bottom */
+    font-size: 1rem; /* Adjust font size */
+    color: #ddd; /* Light gray text */
+    border-top: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border for separation */
+    padding-top: 20px; /* Add padding above the footer bottom */
+}
+
+.footer-bottom span {
+    color: #FFD700; /* Gold color for the year */
+}
+
+/* Decorative Elements */
+.site-footer::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: -50px;
+    width: 150px;
+    height: 150px;
+    background: rgba(255, 255, 255, 0.1); /* Subtle decorative circle */
+    border-radius: 50%;
+    z-index: 0; /* Behind content */
+}
+
+.site-footer::after {
+    content: '';
+    position: absolute;
+    bottom: -50px;
+    right: -50px;
+    width: 200px;
+    height: 200px;
+    background: rgba(255, 255, 255, 0.1); /* Subtle decorative circle */
+    border-radius: 50%;
+    z-index: 0; /* Behind content */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .site-footer {
+        text-align: center; /* Ensure proper alignment on smaller screens */
+    }
+
+    .site-footer .contact-info {
+        font-size: 1rem; /* Adjust font size for smaller screens */
+    }
+}
+
+
+
+#footer-cont{
+    margin-top: -50px;
+    margin-bottom: -50px;
+}
+
+.fo-p{
+    font-size: .8rem; /* Adjust font size for readability */
+    line-height: 0.8; /* Improve line spacing */
+    color: #fff; /* White text for contrast */
+    margin-bottom: 15px; /* Space between contact items */
+}
+
+
+/* Privacy & Ethics Section Styling */
+.privacy-ethics-section {
+    padding: 60px 20px; /* Add padding for spacing */
+    /* background: linear-gradient(135deg, #096bce, #e8f5e9); Subtle gradient background */
+    text-align: center; /* Center-align text */
+    /* border-top: 5px solid #4CAF50; Add a green border at the top */
+}
+
+.privacy-ethics-section .section-title {
+    font-size: 2.5rem; /* Larger font size for the title */
+    font-weight: bold; /* Bold text */
+    color: #0cd849; /* Dark text color */
+    margin-bottom: 30px; /* Space below the title */
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1); /* Subtle text shadow */
+}
+
+.privacy-content {
+    font-size: 1.2rem; /* Adjust font size for readability */
+    line-height: 1.8; /* Improve line spacing */
+    color: #555; /* Subtle gray text */
+    margin-bottom: 30px; /* Space below the paragraph */
+}
+
+.privacy-list {
+    list-style: none; /* Remove default list styling */
+    padding: 0; /* Remove padding */
+    margin: 0 auto; /* Center the list */
+    max-width: 800px; /* Limit the width for readability */
+}
+
+.privacy-list li {
+    display: flex; /* Use flexbox for alignment */
+    align-items: center; /* Center-align items vertically */
+    margin-bottom: 15px; /* Space between list items */
+    font-size: 1.2rem; /* Adjust font size */
+    color: #333; /* Dark text color */
+    background: #fff; /* White background for contrast */
+    padding: 15px; /* Add padding inside the list item */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
+}
+
+.privacy-list li:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* More pronounced shadow */
+}
+
+.privacy-list li i {
+    font-size: 1.5rem; /* Larger icon size */
+    color: #4CAF50; /* Green color for the icon */
+    margin-right: 15px; /* Space between icon and text */
+}
+
+.privacy-list li:hover i {
+    color: #81C784; /* Lighter green on hover */
+}
+
+@media (max-width: 768px) {
+    .privacy-ethics-section {
+        padding: 40px 15px; /* Adjust padding for smaller screens */
+    }
+
+    .privacy-list li {
+        font-size: 1rem; /* Adjust font size for smaller screens */
+    }
+}
+
+
+#rm-gap{
+    margin-top: -50px;
+    margin-bottom: -50px;
+}
+
+#ti-dev{
+    color: #fff;
+}
+
+#sec2{
+    margin-top: 50px;
+    margin-bottom: -20px;
+}

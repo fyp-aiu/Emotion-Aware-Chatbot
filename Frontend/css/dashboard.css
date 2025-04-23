@@ -1,0 +1,90 @@
+:root {
+    --primary-color: #1B4D3E;
+    --secondary-color: #4CAF50;
+    --hover-color: rgba(255,255,255,0.1);
+}
+
+body {
+    background: #f8fafc;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 250px;
+    background: var(--primary-color);
+    color: white;
+    height: 100vh;
+    padding: 1rem;
+    position: fixed;
+}
+
+.logo {
+    width: 160px;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+.nav-item {
+    padding: 0.8rem;
+    margin: 0.5rem 0;
+    border-radius: 5px;
+    transition: 0.5s all ease;
+    display: flex;
+    align-items: center;
+}
+
+.nav-item:hover {
+    background: var(--hover-color);
+}
+
+.nav-item i {
+    width: 25px;
+    margin-right: 12px;
+}
+
+.nav-item a {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.nav-item a:hover {
+    transform: translateX(5px);
+}
+
+/* Main Content */
+.main-content {
+    margin-left: 250px;
+    padding: 2rem;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+/* Chart Container */
+.chart-container {
+    background: white;
+    padding: 1.6rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    width: 900px;
+    margin: 2rem 0;
+}
+
+/* Current Emotion */
+.current-emotion {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    width: 900px;
+    margin-top: 2rem;
+}

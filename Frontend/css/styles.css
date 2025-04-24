@@ -1979,7 +1979,7 @@ html {
 
 .overview-section-second {
     position: relative; /* Ensure proper positioning for the overlay */
-    background: url('../images/new.jpg') no-repeat center center/cover; /* Add your background image */
+    background: url('../images/arts\ \(4\).jpg') no-repeat center center/cover; /* Add your background image */
     background-size: cover; /* Ensure the image covers the entire section */
     color: var(--white); /* Ensure text is readable */
     padding: 50px 15px; /* Add padding for spacing */
